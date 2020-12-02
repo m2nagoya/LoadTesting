@@ -15,24 +15,25 @@
 | **CPU** | **1.4GHz クアッドコアIntel Core i5** |  
 | **RAM** | **8GB 2133MHz LPDDR3** |  
 - ### 実行要件  
-| 最大ユーザ数<br>(Number of total users to simulate) |  10,000   |
+| 最大ユーザ数<br>(Number of total users to simulate) |  1,000   |
 | :----: | :-------: |
-| **接続数の増加率<br>(Hatch rate)** |  **5**    |
+| **接続数の増加率<br>(Hatch rate)** |  **10**    |
 | **アクセス先URL<br>(Host)** | http://localhost:8080 |
 
 ## 3. 実行結果の可視化はイケてるか
 - ### 1秒毎のリクエスト数
-  ![total_requests_per_second_1606451542](https://user-images.githubusercontent.com/51310989/100414108-4be1b480-30bc-11eb-8e85-d03b4b452d28.png)
+  ![number_of_users_1606872790](https://user-images.githubusercontent.com/51310989/100818086-c0d23700-348c-11eb-8190-25af280edbaa.png)
 - ### 1ms毎の応答時間
-  ![response_times_(ms)_1606451542](https://user-images.githubusercontent.com/51310989/100414110-4e440e80-30bc-11eb-84b8-bc8457b3efa6.png)
+  ![response_times_(ms)_1606872790](https://user-images.githubusercontent.com/51310989/100818089-c3349100-348c-11eb-9b6a-b084ba457194.png)
 - ### ユーザー数の推移
-  ![number_of_users_1606451542](https://user-images.githubusercontent.com/51310989/100414112-4f753b80-30bc-11eb-8111-240d34a6bf7e.png)
+  ![total_requests_per_second_1606872790](https://user-images.githubusercontent.com/51310989/100818091-c3cd2780-348c-11eb-8c0b-5a1f0882cba2.png)
 - ### locustで出力されるデータ
   - リクエストに関するステータス(CSV)
   - リクエスト失敗に関するログ(CSV)
   - 例外のStackTrace(CSV)
   - レポート(ステータス、可視化チャートなど)
 - ### PNG形式で可視化チャートのダウンロード可能
+
 ## 4. 他の負荷試験ツールにもっといいのがすぐ見つかるか？
 - ### JMeter
   - 豊富なレポートや複雑なシナリオを書くことが可能  
@@ -53,3 +54,14 @@
 ## 5. 第一印象で嫌なところ、イケてないところがあるか？
   - JMeterの場合、テストシナリオ、スレッドグループ、サンプラーなどリクエスト処理に細かなオプション設定があります
   - GUIではなくDockerを用いるためプログラミングスキルが必要(JMeterはGUI/CUI)
+
+## 6. ログ
+- ### 実行端末 / 実行要件
+| OS  | macOS Catalina 10.15.2 | 最大ユーザ数<br>(Number of total users to simulate) |  10,000   | 
+| :----: | :-------: | :----: | :-------: |
+| **CPU** | **1.4GHz クアッドコアIntel Core i5** | **接続数の増加率<br>(Hatch rate)** |  **5**    |
+| **RAM** | **8GB 2133MHz LPDDR3** | **アクセス先URL<br>(Host)** | http://localhost:8080 | 
+
+![total_requests_per_second_1606451542](https://user-images.githubusercontent.com/51310989/100414108-4be1b480-30bc-11eb-8e85-d03b4b452d28.png)
+![response_times_(ms)_1606451542](https://user-images.githubusercontent.com/51310989/100414110-4e440e80-30bc-11eb-84b8-bc8457b3efa6.png)
+![number_of_users_1606451542](https://user-images.githubusercontent.com/51310989/100414112-4f753b80-30bc-11eb-8111-240d34a6bf7e.png)
