@@ -48,7 +48,7 @@
   - JSONで結果を取得
   - プログラミング言語はErlang
 
-\[参考\] <br> https://speakerdeck.com/nissy0409240/pythondeshi-merufu-he-shi-yan?slide=13
+  \[参考\] <br> https://speakerdeck.com/nissy0409240/pythondeshi-merufu-he-shi-yan?slide=13
 
 ## 5. 第一印象で嫌なところ、イケてないところがあるか？
   - JMeterの場合、テストシナリオ、スレッドグループ、サンプラーなどリクエスト処理に細かなオプション設定があります
