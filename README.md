@@ -1,4 +1,4 @@
 # Losd Testing
 
-## 1. [Locust](/pages/locust.md)
-## 2. [マルチユーザーシナリオ](/pages/senario.md)
+- [Locust](/pages/locust.md)
+- [マルチユーザーシナリオ](/pages/senario.md)
