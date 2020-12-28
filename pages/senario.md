@@ -97,8 +97,28 @@ class WebsiteUser(HttpUser):
     max_wait = w + 0.5 * w * random.gauss(0, 1)
 ```
 
-## 実行結果
-[実行結果(2020年12月28日)](https://github.com/m2nagoya/LoadTesting/blob/main/log/report_1609121213.8134851.html)
+## 2. シナリオ実行の環境要件
+- ### 実行端末  
+| OS  | macOS Catalina 10.15.2 |  
+| :----: | :-------: |  
+| **CPU** | **1.4GHz クアッドコアIntel Core i5** |  
+| **RAM** | **8GB 2133MHz LPDDR3** |  
+- ### 実行要件  
+| 最大ユーザ数<br>(Number of total users to simulate) |  1,000   |
+| :----: | :-------: |
+| **接続数の増加率<br>(Hatch rate)** |  **10**    |
+| **アクセス先URL<br>(Host)** | http://127.0.0.1:5000 |
+
+## 3. 実行結果
+- ### 1秒毎のリクエスト数
+![number_of_users_1609122207](https://user-images.githubusercontent.com/51310989/103185334-5089ca80-48ff-11eb-9c87-7fb9be48afca.png)
+- ### 1ms毎の応答時間
+![response_times_(ms)_1609122207](https://user-images.githubusercontent.com/51310989/103185336-51226100-48ff-11eb-8e3a-068643b3541c.png)
+- ### ユーザー数の推移
+![total_requests_per_second_1609122206](https://user-images.githubusercontent.com/51310989/103185338-52ec2480-48ff-11eb-8a62-79ed6bc383b7.png)
+
+## 4. ログ
+- [実行結果(2020年12月28日)](https://github.com/m2nagoya/LoadTesting/blob/main/log/report_1609121213.8134851.html)
 
 
 
