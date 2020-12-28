@@ -98,7 +98,7 @@ class WebsiteUser(HttpUser):
 ```
 
 ## 実行結果
-[実行結果(2020年12月28日)](https://github.com/m2nagoya/LoadTesting/log/report_1609121213.8134851.html)
+[実行結果(2020年12月28日)](https://github.com/m2nagoya/LoadTesting/blob/main/log/report_1609121213.8134851.html)
 
 
 
