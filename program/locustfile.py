@@ -1,4 +1,4 @@
-# cording: utf-8
+# coding: utf-8
 
 '''
 ここは public repository なので example.com などで記述します。
@@ -33,83 +33,62 @@ import requests
 import random
 import string
 import os
+import itertools
 from locust import HttpLocust, TaskSet, task, HttpUser
 
 url = 'http://127.0.0.1:5000/post'
 companyID = 1234567890
 limit = 3
-w = 1
+w = 1     # wait_time
 
-# CSV作成
-def make_csv() :
-    # loginnameとpasswordが入力されたCSVを作成
-    if os.path.exists('profile.csv'):
-        os.remove('profile.csv')
+# csv読込(一括)
+class read_csv :
+    data = [] # [loginname, password, text]
+    arr1, arr2, arr3 = [], [], []
 
-    with open('profile.csv', 'a', newline="") as f:
-        writer = csv.writer(f)
+    # 初期化
+    def __init__(self):
+        # それぞれ配列に格納
+        with open('data/profile.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                self.arr1.append(row[0]) # loginname
+                self.arr2.append(row[1]) # password
+        with open('data/text.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                self.arr3.append(row[0]) # text
 
-        # ログインネームとパスワードを10000行出力
-        for _ in range(10000):
-            loginname = random.randint(10000,99999)
-            password  = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])
-            writer.writerow([loginname, password])
+        # 個々の配列を統合
+        for i, j, k in zip(self.arr3, self.arr2, self.arr1):
+            self.data.append([i, j, k])
+    
+        # ランダム化
+        random.shuffle(self.data)
 
-    # 単語が入力されたCSVを作成
-    if os.path.exists('text.csv'):
-        os.remove('text.csv')
+        # イテレータに変換
+        self.data = itertools.cycle(self.data)
 
-    with open('text.csv', 'a', newline="") as f:
-        writer = csv.writer(f)
-
-        # 辞書から単語列を全て取得
-        with open('/usr/share/dict/words','r', newline='') as f:
-            lines = f.readlines()
-
-        # 単語を10000行出力
-        for _ in range(10000):
-            text = lines[random.randint(1,len(lines)-1)].replace('\r\n','').replace('\n','')
-            writer.writerow([text])
-
-# CSV読み込み
-def read_csv() :
-    arr = []
-    idx = random.randint(1, 10000)
-    with open('profile.csv', 'r') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if reader.line_num == idx:
-                arr.append(row[0]) # loginname
-                arr.append(row[1]) # password
-                break
-    with open('text.csv', 'r') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if reader.line_num == idx:
-                arr.append(row[0]) # text
-                break
-    return arr
+instance = read_csv() # インスタンス生成
 
 class UserBehavior(TaskSet):
-    make_csv() # 1度のみ実行
-
-    @task(1)
-    def get_param(self):
-        self.loginname, self.password, self.text = read_csv()
 
     @task(1)
     def profile(self):
+        loginname, password, text = next(instance.data)
+        print(loginname, password, text)
+
         self.client.post(url, {
                                 "authInfo":{
                                     "companyId": companyID,
-                                    "loginName": self.loginname,
-                                    "password":  self.password
+                                    "loginName": loginname,
+                                    "password":  password
                                 },
                                 "resultRange":{
                                     "limit":limit
                                 },
                                 "searchCondition":{
-                                    "text": self.text
+                                    "text": text
                                 }
                             }
                         )
