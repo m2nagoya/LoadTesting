@@ -161,8 +161,5 @@ locust --host=http://127.0.0.1:5000
 ```
 
 ## 8. 実行ログ
-- [実行結果(2020年12月28日)](https://github.com/m2nagoya/locust/log/report_1609121213.8134851.html)
-- [実行結果(2021年5月21日)](https://github.com/m2nagoya/locust/log/report_1621579564.4859762.html)
-
-
-
+- [実行結果(2020年12月28日)](https://github.com/m2nagoya/locust/blob/main/log/report_1609121213.8134851.html)
+- [実行結果(2021年5月21日)](https://github.com/m2nagoya/locust/blob/main/log/report_1621579564.4859762.html)
